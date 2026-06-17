@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Recent Gmail Inbox Messages</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9f9f9; }
+        h2 { color: #333; border-bottom: 2px solid #ea4335; padding-bottom: 10px; }
+        .email-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 5px solid #4285f4; }
+        .sender { font-weight: bold; color: #4285f4; }
+        .subject { font-size: 1.1em; font-weight: bold; color: #222; margin: 5px 0; }
+        .snippet { color: #666; font-style: italic; font-size: 0.95em; }
+    </style>
+</head>
+<body>
+
+    <h2>📬 Your 5 Most Recent Emails</h2>
+
+    {% if emails %}
+        {% for email in emails %}
+            <div class="email-card">
+                <div class="sender">From: {{ email.sender }}</div>
+                <div class="subject">Subject: {{ email.subject }}</div>
+                <div class="snippet">"{{ email.snippet }}"</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No recent emails found or unable to access mailbox.</p>
+    {% endif %}
+
+</body>
+</html>
